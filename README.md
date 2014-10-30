@@ -6,7 +6,7 @@ This is a collection of Vagrant virtual machines used at FSU. Since the Vagrantf
 A minimal CentOS instance with no special packages other than developer utilities (git, vim, tmux).
 
 ## centos-docker 
-Built off of the core 'centos' VM but with docker and golang installed, used the host VM for docker projects.
+Built off of the core 'centos' VM but with docker and golang installed, used as the host VM for docker projects.
 
 ## centos-databox 
 Built off of the core 'centos' VM but with R and its dependencies installed, used for data analysis projects.
