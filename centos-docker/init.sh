@@ -9,3 +9,6 @@ yum -y install tmux
 # Install docker utils
 yum -y install golang
 yum -y install docker-io
+
+# Activate docker service
+service docker start
