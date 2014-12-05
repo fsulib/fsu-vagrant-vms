@@ -22,3 +22,15 @@ chmod -R 777 /var/www/html
 cp /var/www/html/sites/default/default.settings.php /var/www/html/sites/default/settings.php
 chmod 777 /var/www/html/sites/default/settings.php
 service httpd start
+
+# Install and set up MySQL
+yum -y install mysql_server 
+yum -y install php-mysql
+/sbin/service mysqld start
+chkconfig mysqld on
+mysql -e "DROP DATABASE test;"
+mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host!='localhost';"
+mysql -e "CREATE DATABASE drupal;"
+mysql -e "CREATE USER 'drupal'@'localhost' IDENTIFIED BY 'drupal';"
+mysql -e "GRANT ALL PRIVILEGES ON drupal.* TO drupal@localhost;"
+mysql -e "FLUSH PRIVILEGES;"

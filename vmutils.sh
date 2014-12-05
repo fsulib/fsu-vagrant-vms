@@ -29,6 +29,26 @@ case $1 in
       fi
     done
     ;;
+  halt)
+    for VM in `ls`
+    do
+      if [ -f ./$VM/Vagrantfile ]
+      then
+        cd $VM; vagrant halt; cd ..
+        cd $VM; vagrant status | sed -n '3p'; cd ..
+      fi
+    done
+    ;;
+  destroy)
+    for VM in `ls`
+    do
+      if [ -f ./$VM/Vagrantfile ]
+      then
+        cd $VM; vagrant destroy; cd ..
+        cd $VM; vagrant status | sed -n '3p'; cd ..
+      fi
+    done
+    ;;
   *)
     echo "Unknown argument."
     ;;
