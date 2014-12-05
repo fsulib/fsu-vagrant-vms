@@ -26,7 +26,7 @@ case $1 in
     fi
     ;;
 
-  check)
+  status)
   # Dives into every VM project folder and outputs VM status.
     for VM in `ls`
     do
