@@ -9,7 +9,12 @@ then
 fi
 
 case $1 in
+
   new)
+  # Create a new VM project based on an existing one.
+  # $2 is the project you want to base the new one on,
+  # and $3 is the new project name (names folder and Vagrant machine name). 
+  # Script ends editing the init script.
     BASEVM=$2
     NEWVM=$3
     if [ -d $BASEVM ]; then
@@ -20,7 +25,9 @@ case $1 in
       echo "ERROR: Base VM '$BASEVM' does not exist." 
     fi
     ;;
+
   check)
+  # Dives into every VM project folder and outputs VM status.
     for VM in `ls`
     do
       if [ -f ./$VM/Vagrantfile ]
@@ -29,7 +36,9 @@ case $1 in
       fi
     done
     ;;
+
   halt)
+  # Dives into every VM project folder, halts the VM, and returns the resulting status. 
     for VM in `ls`
     do
       if [ -f ./$VM/Vagrantfile ]
@@ -39,7 +48,9 @@ case $1 in
       fi
     done
     ;;
+
   destroy)
+  # like halt, but deadlier. Kill 'em all.
     for VM in `ls`
     do
       if [ -f ./$VM/Vagrantfile ]
@@ -49,6 +60,7 @@ case $1 in
       fi
     done
     ;;
+
   *)
     echo "Unknown argument."
     ;;
