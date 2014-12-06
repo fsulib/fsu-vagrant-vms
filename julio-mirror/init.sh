@@ -37,38 +37,34 @@ mysql -e "FLUSH PRIVILEGES;"
 service httpd restart
 
 # Install modules with specifc version numbers to reflect Julio site
+cd /var/www/html/sites/
 drush dl block_titlelink-7.x-1.3
-
-<<COM
-calendar: 7.x-3.4
-captcha: 7.x-1.0
-cas: 7.x-1.3
-css_injector: 7.x-1.8
-custom_search: 7.x-1.12
-devel: 7.x-1.3
-ds: 7.x-2.4
-email_sender_override: 7.x (this module is tiny and probably not neccessary)
-fancy_login: 7.x-3.0-beta6
-field_permissions: 7.x-1.0-beta2
-google_analytics: 7.x-1.3
-htmlpurifier: 7.x-1.0
-jquery_plugin: 7.x-1.0
-js_injector: 7.x-2.0
-masquerade: 7.x-1.0-rc7
-menu_attributes: 7.x-1.0-rc2
-menu_block: 7.x-2.3
-menu_token: 7.x-1.0-beta5
-nice_menus: 7.x-2.4
-pathologic: 7.x-2.11
-rules: 7.x-2.6
-views_slideshow: 7.x-3.1
-webform: 7.x-3.20
-webform_report: 7.x-1.0
-webform_rules: 7.x-1.6
-
-LIBS:
-CAS (phpCAS): 1.3.2
-FirePHPCore: 0.3.1
-htmlpurifier: 4.5.0
-jquery.cycle: 3.0.3
-COM
+drush dl calendar-7.x-3.4
+drush dl captcha-7.x-1.0
+drush dl cas-7.x-1.3
+drush dl css_injector-7.x-1.8
+drush dl custom_search-7.x-1.12
+drush dl devel-7.x-1.3
+drush dl ds-7.x-2.4
+#email_sender_override: 7.x (this module is tiny and probably not neccessary)
+drush dl fancy_login-7.x-3.0-beta6
+drush dl field_permissions-7.x-1.0-beta2
+drush dl google_analytics-7.x-1.3
+drush dl htmlpurifier-7.x-1.0
+drush dl jquery_plugin-7.x-1.0
+drush dl js_injector-7.x-2.0
+drush dl masquerade-7.x-1.0-rc7
+drush dl menu_attributes-7.x-1.0-rc2
+drush dl menu_block-7.x-2.3
+drush dl menu_token-7.x-1.0-beta5
+drush dl nice_menus-7.x-2.4
+drush dl pathologic-7.x-2.11
+drush dl rules-7.x-2.6
+drush dl views_slideshow-7.x-3.1
+drush dl webform-7.x-3.20
+drush dl webform_report-7.x-1.0
+drush dl webform_rules-7.x-1.6
+cp /vagrant/libs.tgz /var/www/html/sites/all
+cd /var/www/html/sites/all
+tar -xvzf libs.tgz
+rm /var/www/html/sites/all/libs.tgz
