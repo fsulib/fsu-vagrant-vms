@@ -1,7 +1,7 @@
 VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.define "ubuntu1404-islandora14" do |app|
-    app.vm.hostname = "ubuntu1404-islandora14"
+  config.vm.define "ubuntu-islandora" do |app|
+    app.vm.hostname = "ubuntu-islandora"
     app.vm.box = "isl"
     app.vm.box_url = "https://www.dropbox.com/s/zg5d144dfu80mu6/isl.box?dl=1"
     app.vm.network :private_network, ip: "10.10.10.12"
