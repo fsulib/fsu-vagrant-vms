@@ -1,4 +1,4 @@
-# drupal
+# drupal7-dev
 
 ## Specs:
 - CentOS v6.5
