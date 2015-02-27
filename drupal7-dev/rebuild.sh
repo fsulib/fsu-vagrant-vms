@@ -19,3 +19,4 @@ tar -xvzf $CURDIR/dependencies/backup.tar -C $CURDIR/dependencies &> /dev/null
 
 echo "\nSpinning up new VM..."
 /usr/bin/su - $U -c "cd $CURDIR; vagrant up"
+echo "\033[0;31;5mDone! drupal7-dev now live @ localhost:9999\033[0m"

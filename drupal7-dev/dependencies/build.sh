@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 
-# Install core utils
-yum -y install epel-release
-yum -y install vim
+yum -y install epel-release 
+yum -y install vim 
 yum -y install git 
-yum -y install tmux
+yum -y install tmux 
+yum -y install httpd 
+yum -y install php 
+yum -y install php-devel 
+yum -y install php-gd 
+yum -y install php-drush-drush 
+yum -y install mysql-server 
+yum -y install php-mysql 
 
-# Install Drupal deps
-yum -y install httpd
-yum -y install php
-yum -y install php-devel
-yum -y install php-gd
-yum -y install php-drush-drush
+echo "Configuring new system..."
 echo "AddHandler php5-script .php" >> /etc/httpd/conf/httpd.conf
 echo "AddType text/html .php" >> /etc/httpd/conf/httpd.conf
 cd /var/www
@@ -26,13 +27,9 @@ rm /etc/httpd/conf/httpd.conf
 cp /tmp/httpd.conf /etc/httpd/conf/httpd.conf
 service httpd start
 
-# Install and set up MySQL
-yum -y install mysql-server 
-yum -y install php-mysql
 /sbin/service mysqld start
 chkconfig mysqld on
-#mysql -e "DROP DATABASE test;"
-#mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host!='localhost';"
+
 mysql -e "CREATE DATABASE devdb;"
 mysql -e "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';"
 mysql -e "GRANT ALL PRIVILEGES ON devdb.* TO dev@localhost;"
