@@ -1,13 +1,21 @@
 #!/bin/sh
 
-# Kill old VM
-vagrant destroy --force
-
-# Get latest backup from private FSU server
+if [ "$(id -u)" != "0"  ]; then
+  echo "Don't forget to sudo!" 1>&2
+  exit 1
+fi
+U=`basename $( echo $HOME )`
 CURDIR=`pwd`
+
+echo "\nDestroying old VM..."
+/usr/bin/su - $U -c "cd $CURDIR; vagrant destroy --force"
+
+echo "\nGetting Omega backup..."
 /usr/bin/su - backrest -c "scp backrest@lib-srv-webdev01.lib.fsu.edu:~/dev/FSULibraries_latest.sitearchive.tar /tmp/backup.tar"
 mv /tmp/backup.tar $CURDIR/dependencies/
-tar -xvzf $CURDIR/dependencies/backup.tar -C $CURDIR/dependencies/
 
-# Build VM
-vagrant up
+echo "\nExtracting backup..."
+tar -xvzf $CURDIR/dependencies/backup.tar -C $CURDIR/dependencies &> /dev/null
+
+echo "\nSpinning up new VM..."
+/usr/bin/su - $U -c "cd $CURDIR; vagrant up"
