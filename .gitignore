@@ -1,3 +1,5 @@
 .vagrant
 backup.tar
 FSULibraries_latest
+ojs2/dependencies/ojs*
+ojs3/dependencies/ojs*
