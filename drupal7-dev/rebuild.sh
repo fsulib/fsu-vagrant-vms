@@ -4,6 +4,7 @@ if [ "$(id -u)" != "0"  ]; then
   echo "Don't forget to sudo!" 1>&2
   exit 1
 fi
+
 U=`basename $( echo $HOME )`
 CURDIR=`pwd`
 
