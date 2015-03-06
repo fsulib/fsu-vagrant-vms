@@ -65,4 +65,3 @@ case $1 in
     echo "Unknown argument."
     ;;
 esac
-
