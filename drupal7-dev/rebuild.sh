@@ -12,7 +12,8 @@ echo "\nDestroying old VM..."
 /usr/bin/su - $U -c "cd $CURDIR; vagrant destroy --force"
 
 echo "\nGetting Omega backup..."
-/usr/bin/su - backrest -c "scp backrest@lib-srv-webdev01.lib.fsu.edu:~/dev/FSULibraries_latest.sitearchive.tar /tmp/backup.tar"
+/usr/bin/su - backrest -c "scp backrest@lib-srv-webdev01.lib.fsu.edu:~/backhand/FSULibraries_backrest.sitearchive.tar.gz /tmp/backup.tar.gz"
+gunzip /tmp/backup.tar.gz
 mv /tmp/backup.tar $CURDIR/dependencies/
 
 echo "\nExtracting backup..."

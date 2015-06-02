@@ -17,11 +17,12 @@ echo "AddHandler php5-script .php" >> /etc/httpd/conf/httpd.conf
 echo "AddType text/html .php" >> /etc/httpd/conf/httpd.conf
 cd /var/www
 rm -r html
-cp -r /vagrant/dependencies/FSULibraries_latest/docroot /var/www
+cp -r /vagrant/dependencies/FSULibraries_backrest/docroot /var/www
 mv docroot html
 chmod -R 777 /var/www/html
 rm /var/www/html/sites/default/settings.php
 cp /vagrant/dependencies/settings.php /var/www/html/sites/default/settings.php
+cp /vagrant/dependencies/.htaccess /var/www/html/.htaccess
 cat /etc/httpd/conf/httpd.conf | sed -e 's/AllowOverride\ None/AllowOverride\ All/' > /tmp/httpd.conf
 rm /etc/httpd/conf/httpd.conf
 cp /tmp/httpd.conf /etc/httpd/conf/httpd.conf
@@ -34,5 +35,7 @@ mysql -e "CREATE DATABASE devdb;"
 mysql -e "CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';"
 mysql -e "GRANT ALL PRIVILEGES ON devdb.* TO dev@localhost;"
 mysql -e "FLUSH PRIVILEGES;"
-mysql -u dev --password=dev devdb < /vagrant/dependencies/FSULibraries_latest/database.sql
+mysql -u dev --password=dev devdb < /vagrant/dependencies/FSULibraries_backrest/database.sql
 service httpd restart
+
+adduser backrest

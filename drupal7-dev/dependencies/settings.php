@@ -1,5 +1,4 @@
 <?php
-
 $databases = array (
   'default' => 
   array (
@@ -15,7 +14,6 @@ $databases = array (
     ),
   ),
 );
-
 $update_free_access = FALSE;
 $drupal_hash_salt = 'AF7gb0tMgbjv7Y16SP475MsD5VMV9HHXrtaH9XVAqkE';
 ini_set('session.gc_probability', 1);
