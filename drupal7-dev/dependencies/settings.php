@@ -15,7 +15,6 @@ $databases = array (
   ),
 );
 $update_free_access = FALSE;
-$drupal_hash_salt = 'AF7gb0tMgbjv7Y16SP475MsD5VMV9HHXrtaH9XVAqkE';
 ini_set('session.gc_probability', 1);
 ini_set('session.gc_divisor', 100);
 ini_set('session.gc_maxlifetime', 200000);
